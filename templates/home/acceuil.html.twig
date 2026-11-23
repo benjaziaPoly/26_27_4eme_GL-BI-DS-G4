@@ -1,0 +1,10 @@
+{% extends 'template_job.html.twig' %}
+{% block title %}
+  {{ parent() }}
+  -welcome
+{% endblock %}
+
+{% block body %}
+    {% include "composant/carousel.html.twig" %}
+    {% include "composant/search.html.twig" %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "template_job.html.twig" %}
+{% block title %}
+    {{ parent () }} - Creation d'une candidature
+{% endblock %}
+
+{% block body %}
+    <h3>Creation d'une candidature</h3>
+    <hr>
+    {{ form_start(f) }}
+    {{ form_widget(f) }}
+    {{ form_end(f) }}
+{% endblock %}

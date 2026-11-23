@@ -1,0 +1,46 @@
+{% extends "template_job.html.twig" %}
+{% block title %}
+    {{ parent () }} - Détail job
+{% endblock %}
+
+{% block body %}
+    <h3>Détail Job</h3>
+    <hr>
+    {% if job %}
+    <table class="table table-bordred">
+        {% if job.image is not null  %}
+            <img src="{{ job.image.url }}" width="150" height="90" />
+        {% endif%} 
+           
+           <tr>
+            <td> Type </td> <td> {{ job.getType }}</td>
+           </tr>
+            <tr>
+            <td> Description </td> <td> {{ job.getDescription }}</td>
+           </tr>
+            <tr>
+            <td> email </td> <td> {{ job.getEmail }}</td>
+           </tr>
+            <tr>
+            <td> company </td> <td> {{ job.getCompany }}</td>
+           </tr>
+            <tr>
+            <td> Date Expiration </td> <td> {{ job.getExpiresAt | date("d-m-Y") }}</td>
+           </tr>
+    </table>
+    {% if listeC | length > 0 %}
+        <h3>Liste des Candidatures...</h3>
+        {% for c in listeC %}
+            <ul>
+                <li>Nom & prénom : {{ c.candidat }}</li>
+                <li>Contenu : {{ c.contenu }}</li>
+                <li>Date dépot : {{ c.date | date("d-m-Y") }}</li>
+            </ul>
+         {% endfor %}
+     {% else %}
+        aucune candidature pour le moment!
+        {% endif %}       
+    {% else %}
+        <p class="text-danger">Code Job incorrect</p>
+        {% endif%}
+{% endblock %}
